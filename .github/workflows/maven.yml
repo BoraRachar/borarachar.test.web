@@ -1,0 +1,51 @@
+name: Executar testes e gerar relatório
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  maven-test:
+
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Cópia repositório executor
+        uses: actions/checkout@v3
+
+      - name: Configurar JDK 19
+        uses: actions/setup-java@v3
+        with:
+          java-version: 19
+          distribution: 'adopt'
+          cache: maven
+
+      - name: Iniciar o Chrome
+        run: |
+          choco install chromium
+          choco install chromedriver
+
+      - name: Build with Maven
+        run: |
+          mvn clean install
+          exit 0
+                
+      - name: Gerar Relatório HTML
+        run: |
+          mvn allure:report
+          
+      - name: Copia as evidências e teste e transfere para uma pasta pública 
+        run: | 
+           mkdir public 
+           cp -r target/site/allure-maven-plugin/* public
+
+
+      - name: Realizar Deploy do relatório HTML
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          force_orphan: true
