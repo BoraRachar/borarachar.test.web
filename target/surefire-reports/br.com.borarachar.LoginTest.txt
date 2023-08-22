@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: br.com.borarachar.HomeTest
+Test set: br.com.borarachar.LoginTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.976 s -- in br.com.borarachar.HomeTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.302 s -- in br.com.borarachar.LoginTest

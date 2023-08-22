@@ -15,14 +15,14 @@ protected WebDriver driver;
 public void start(){
     
     WebDriverManager.chromedriver().setup();   // Configurar o WebDriverManager para baixar e configurar o driver do Chrome
-
+    
     // Configurar as opções do Chrome para o modo headless
     ChromeOptions chromeOptions = new ChromeOptions();
     chromeOptions.addArguments("--headless");
         // Inicializar o driver do Chrome com as opções configuradas
-        driver = new ChromeDriver(chromeOptions);
+    driver = new ChromeDriver(chromeOptions);
 
-        driver.get("http://159.223.69.215/");
+        driver.get("http://borarachar.online/");
 
 }
 
