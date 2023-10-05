@@ -11,6 +11,10 @@ public class BaseTest {
     
 protected WebDriver driver;
 
+public BaseTest(WebDriver driver) {
+    this.driver = driver;
+}
+
 @Before
 public void start(){
     

@@ -3,7 +3,9 @@ name: Executar testes e gerar relatório
 on:
   push:
     branches: [ "main" ]
-
+  schedule:
+    - cron: "0 0 */2 * *"
+    
 jobs:
   maven-test:
 
