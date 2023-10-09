@@ -28,13 +28,15 @@ private WebElement mensageConfirmEmail;
 
 
 
-public ForgetPassword validaEmailNaoCadastrado(){
+public ForgetPassword validaEmailNaoCadastrado() throws InterruptedException{
+    Thread.sleep(300);
     inputEmail.sendKeys("emailinvalido@invalido");
     buttonRecuperarSenha.click();
     return new ForgetPassword(driver);
 }
 
 public String confirmacaoDeEnvioDeEmail(){
+    inputEmail.clear();
     inputEmail.sendKeys("kixiyey180@hapincy.com");
     buttonRecuperarSenha.click();
     return mensageConfirmEmail.getText();

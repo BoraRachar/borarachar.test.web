@@ -21,14 +21,14 @@ public class testForgetPasswordTest extends BaseTest {
 
 @Test
 @DisplayName("")
-public void TC_001_DeveValidarOCampoObrigatorioDeEmail(){
+public void TC_001_DeveValidarOCampoObrigatorioDeEmail() throws InterruptedException{
 
     String spanErroEmail = new LoginPage(driver)
         .redirecionarParaEsqueciMinhaSenha()
         .validaEmailNaoCadastrado()
         .validaMensagemDeErroNoEmail();
 
-        //Assertions.assertEquals("Email não cadastrado", spanErroEmail);
+        Assertions.assertEquals("Email incorreto ou inexistente", spanErroEmail);
 
     String confirmaEmail = new ForgetPassword(driver)
         .confirmacaoDeEnvioDeEmail();
